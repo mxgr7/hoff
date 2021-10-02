@@ -1,0 +1,164 @@
+cabal-version:      2.4
+name:               hoff
+version:            0.1.0.0
+
+synopsis: Haskell dataframes
+
+-- A longer description of the package.
+-- description:
+
+-- A URL where users can report bugs.
+-- bug-reports:
+
+-- The license under which the package is released.
+license: Apache-2.0
+
+-- A copyright notice.
+-- copyright:
+-- category:
+
+data-files: python/HoffSerialise.py
+
+library
+
+    exposed-modules:
+       Hoff
+       ,Hoff.HSql
+       ,Hoff.HSql.Operators
+       ,Hoff.HSql.TH
+       ,Hoff.H
+       ,Hoff.JSON
+       ,Hoff.Dict
+       ,Hoff.Serialise
+       ,Hoff.Show
+       ,Hoff.Utils
+       ,Hoff.Examples
+       ,Hoff.Vector
+       ,Hoff.Python
+       ,Hoff.Iterable
+       ,Hoff.Tests
+       ,Hoff.Table.Types
+       ,Hoff.Table.Operations
+       ,Hoff.Table.Show
+       ,Hoff.Table
+
+    autogen-modules: Paths_hoff
+    other-modules: Paths_hoff
+
+    -- LANGUAGE extensions used by modules in this package.
+    -- other-extensions:
+    build-depends:    QuickCheck
+                    , aeson
+                    , base
+                    , bytestring
+                    , cborg
+                    , chronos
+                    , clock
+                    , containers
+                    , pretty-simple
+                    , data-default
+                    , deepseq
+                    , filepath
+                    , ghc-prim
+                    , hashable
+                    , hashtables
+                    , hex-text
+                    , hspec
+                    , interpolatedstring-perl6
+                    , large-anon
+                    , lens
+                    , mtl
+                    , primitive
+                    , process
+                    , scientific 
+                    , serialise
+                    , sop-core
+                    , template-haskell
+                    , text
+                    , text-show
+                    , time
+                    , transformers
+                    , tuple
+                    , unix
+                    , unordered-containers
+                    , vector
+                    , vector-algorithms
+                    , vector-instances
+                    , yahp
+                    , timeit
+                    -- , constraint-tuples
+                    
+    ghc-options:
+     -Werror=partial-fields
+     -Werror=incomplete-record-updates
+     -Werror=incomplete-uni-patterns
+     -Werror=incomplete-patterns
+     -Werror=unused-top-binds -Werror=unused-local-binds -Werror=unused-pattern-binds
+     -Werror=unused-matches
+     -Werror=overflowed-literals
+     -Werror=overlapping-patterns
+     -Werror=missing-fields
+     -Werror=typed-holes
+     -Werror=empty-enumerations
+     -Werror=unrecognised-pragmas
+     -Werror=missing-methods
+     -Wall
+     -Wno-orphans
+     -Wno-missing-signatures
+     -Wno-unused-do-bind
+     -Wno-name-shadowing
+     -Wno-unticked-promoted-constructors
+     -Wcompat
+     -fplugin=Data.Record.Anon.Plugin
+      -j +RTS -A128m -n2m -RTS
+
+    default-extensions:
+      ConstraintKinds          
+      DataKinds
+      DeriveFoldable
+      DeriveFunctor
+      DeriveGeneric
+      DeriveTraversable
+      DeriveDataTypeable
+      FlexibleContexts
+      FlexibleInstances
+      RecordWildCards
+      NoImplicitPrelude
+      FunctionalDependencies
+      GADTs
+      GeneralizedNewtypeDeriving
+      KindSignatures
+      MultiParamTypeClasses
+      RebindableSyntax
+      RankNTypes
+      ScopedTypeVariables
+      StandaloneDeriving
+      TupleSections
+      DefaultSignatures
+      TypeFamilies
+      TypeOperators
+      DerivingVia
+      OverloadedStrings
+      LambdaCase
+      TypeApplications
+      OverloadedLabels
+                    
+    hs-source-dirs:   src
+    default-language: Haskell2010
+
+test-suite test1
+  type: exitcode-stdio-1.0
+  main-is: Test.hs
+  ghc-options: -Wall -rtsopts -threaded
+    -j +RTS -A128m -n2m -RTS
+  hs-source-dirs:
+    test
+  build-depends:
+                      base
+                , hoff
+
+  default-language: Haskell2010
+
+-- Local Variables:
+-- compile-command: "nix-shell --run 'cabal exec -- ghc-pkg list'"
+-- End:

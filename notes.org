@@ -1,0 +1,8 @@
+* sort as function and in select/exec
+* distinct (without changing the order), as function and select/exec
+* exec by -> dict with homogenous Vector
+* exec a:x, b:y -> static typing, large-anon record (=dict to vectors of different static types)
+* template haskell: 
+** lift all data.vector/generic function
+** all data.text functinos
+** all numerical functions
